@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply bg-gray-200;
+  }
+}
+
 html,
 body {
   padding: 0;
