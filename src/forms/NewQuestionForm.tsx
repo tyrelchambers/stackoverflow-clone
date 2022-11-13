@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { CSSProperties, useState } from "react";
 import FormGroup from "../components/FormGroup";
 import { useQuestion } from "../hooks/useQuestion";
-import Select from "react-select";
+import Select, { components, OptionProps } from "react-select";
+import { useTags } from "../hooks/useTags";
+import Creatable, { useCreatable } from "react-select/creatable";
+import { Tooltip } from "@mantine/core";
 
 const NewQuestionForm = () => {
   const [state, setState] = useState({
     title: "",
     body: "",
-    tags: [],
+    tags: "",
   });
 
   const { createQuestion } = useQuestion();
+  const { tags } = useTags();
 
   const submitHandler = () => {
     createQuestion.mutate(state);
@@ -18,6 +22,11 @@ const NewQuestionForm = () => {
 
   const changeHandler = (e) => {
     setState({ ...state, [e.currentTarget.name]: e.currentTarget.value });
+  };
+
+  const tagsHandler = (e) => {
+    const values = e.map((t) => t.value);
+    setState({ ...state, tags: values });
   };
 
   return (
@@ -51,7 +60,11 @@ const NewQuestionForm = () => {
       </FormGroup>
 
       <FormGroup label="Tags" htmlFor="tags">
-        <Select />
+        <input
+          placeholder="Add tags seperated by a comma"
+          className="input"
+          onChange={(e) => setState({ ...state, tags: e.currentTarget.value })}
+        />
       </FormGroup>
 
       <button type="button" className="mt-10" onClick={submitHandler}>

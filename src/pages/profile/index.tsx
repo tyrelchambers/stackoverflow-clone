@@ -19,7 +19,9 @@ const ProfileIndex = () => {
 
             <section className="absolute z-10 inset-10  flex items-center">
               <div className="flex flex-col flex-1 w-full ">
-                <Title order={2}>Hey ask a question!</Title>
+                <Title order={2} className="text-white">
+                  Hey ask a question!
+                </Title>
                 <p className="mt-2 text-gray-300 max-w-xl">
                   I'm baby banjo offal deep v food truck fam thundercats,
                   actually whatever. Green juice yuccie church-key prism,
@@ -27,7 +29,7 @@ const ProfileIndex = () => {
                   bicycle rights pour-over neutra sustainable.{" "}
                 </p>
               </div>
-              <Link to="/question/new" className="block mt-10">
+              <Link to="/question/new" className="block mt-10 text-white">
                 Ask a question
               </Link>
             </section>
@@ -35,7 +37,7 @@ const ProfileIndex = () => {
         </section>
 
         <section className="grid grid-cols-2">
-          <div className="flex flex-col bg-zinc-800 rounded-3xl p-6">
+          <div className="flex flex-col bg-zinc-50 dark:bg-zinc-800 rounded-3xl p-6">
             <Title order={2}>Recent questions</Title>
 
             <ul className="mt-6 ">

@@ -26,7 +26,8 @@ const DashHeader = ({ expanded = true }: Props) => {
               {routes.map((r) => (
                 <Link
                   to={r.path}
-                  className="bg-zinc-700 py-2 px-4 rounded-full text-sm"
+                  key={r.label}
+                  className="bg-white dark:bg-zinc-700 py-2 px-4 rounded-full text-sm shadow-sm"
                 >
                   {r.label}
                 </Link>
