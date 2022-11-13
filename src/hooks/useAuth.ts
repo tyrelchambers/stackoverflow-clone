@@ -1,10 +1,10 @@
-import { useRouter } from "next/router";
+import { useNavigate } from "@tanstack/react-location";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { createUser } from "../api/createUser";
 import { loginUser } from "../api/login";
 
 export const useAuth = () => {
-  const router = useRouter();
+  const router = useNavigate();
   const queryClient = useQueryClient();
 
   const register = useMutation((data) => createUser(data), {
@@ -18,7 +18,7 @@ export const useAuth = () => {
 
   const login = useMutation((data) => loginUser(data), {
     onSuccess: () => {
-      router.push("/");
+      // router({to: '/'})
     },
   });
   return { register, login };

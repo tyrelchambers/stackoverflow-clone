@@ -6,6 +6,20 @@
   .input {
     @apply bg-gray-200;
   }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
+    body {
+      color: white;
+      background: black;
+    }
+
+    .input {
+      @apply bg-gray-800;
+    }
+  }
 }
 
 html,

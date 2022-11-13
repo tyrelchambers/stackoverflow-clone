@@ -1,8 +1,10 @@
 import { useMutation, useQuery } from "react-query";
-import { createUser } from "../api/createUser";
 import { getCurrentUser } from "../api/getCurrentUser";
+import { saveOnboarding } from "../api/saveOnboarding";
 
 export const useUser = () => {
   const user = useQuery("currentUser", getCurrentUser);
-  return { currentUser: user.data };
+  const _saveOnboarding = useMutation((data) => saveOnboarding(data));
+
+  return { currentUser: user.data, saveOnboarding: _saveOnboarding };
 };

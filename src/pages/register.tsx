@@ -1,6 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Link } from "@tanstack/react-location";
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
@@ -21,15 +19,14 @@ export default function Register() {
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
-          <Image
+          <img
             alt="Night"
             src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
             className="absolute inset-0 h-full w-full object-cover opacity-80"
-            fill
           />
 
           <div className="hidden lg:relative lg:block lg:p-12">
-            <Link className="block text-white" href="/">
+            <Link className="block text-white" to="/">
               <span className="sr-only">Home</span>
               <svg
                 className="h-8 sm:h-10"
@@ -63,7 +60,7 @@ export default function Register() {
             <div className="relative -mt-16 block lg:hidden">
               <Link
                 className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-blue-600 sm:h-20 sm:w-20"
-                href="/"
+                to="/"
               >
                 <span className="sr-only">Home</span>
                 <svg
@@ -172,11 +169,11 @@ export default function Register() {
               <div className="col-span-6">
                 <p className="text-sm text-gray-500">
                   By creating an account, you agree to our
-                  <Link href="#" className="text-gray-700 underline">
+                  <Link to="#" className="text-gray-700 underline">
                     terms and conditions
                   </Link>
                   and
-                  <Link href="#" className="text-gray-700 underline">
+                  <Link to="#" className="text-gray-700 underline">
                     privacy policy
                   </Link>
                   .
@@ -194,7 +191,7 @@ export default function Register() {
 
                 <p className="mt-4 text-sm text-gray-500 sm:mt-0">
                   Already have an account?
-                  <Link href="/login" className="text-gray-700 underline">
+                  <Link to="/login" className="text-gray-700 underline">
                     Log in
                   </Link>
                   .
