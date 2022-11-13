@@ -10,9 +10,12 @@ const routes = [
   },
 ];
 
-const DashHeader = () => {
+interface Props {
+  expanded?: boolean;
+}
+
+const DashHeader = ({ expanded = true }: Props) => {
   const { currentUser } = useUser();
-  console.log(currentUser);
 
   return (
     <header aria-label="Page Header" className="bg-gray-50 dark:bg-zinc-800">
@@ -94,7 +97,7 @@ const DashHeader = () => {
               className="block h-6 w-px rounded-full bg-gray-200"
             ></span>
 
-            <Link to="#" className="block shrink-0">
+            <Link to="/profile" className="block shrink-0">
               <span className="sr-only">Profile</span>
               <img
                 alt="Man"
@@ -105,16 +108,18 @@ const DashHeader = () => {
           </div>
         </div>
 
-        <div className="mt-8">
-          <Title order={1} className="text-2xl font-bold sm:text-3xl">
-            Welcome Back, {currentUser?.profile.username}!
-          </Title>
+        {expanded && (
+          <div className="mt-8">
+            <Title order={1} className="text-2xl font-bold sm:text-3xl">
+              Welcome Back, {currentUser?.profile.username}!
+            </Title>
 
-          <p className="mt-1.5 text-sm text-gray-500">
-            Your website has seen a 52% increase in traffic in the last month.
-            Keep it up! 🚀
-          </p>
-        </div>
+            <p className="mt-1.5 text-sm text-gray-500">
+              Your website has seen a 52% increase in traffic in the last month.
+              Keep it up! 🚀
+            </p>
+          </div>
+        )}
       </div>
     </header>
   );

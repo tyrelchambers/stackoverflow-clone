@@ -17,7 +17,11 @@
     }
 
     .input {
-      @apply bg-gray-800;
+      @apply bg-zinc-800;
+    }
+
+    .profile-banner > img {
+      filter: brightness(0.7);
     }
   }
 }

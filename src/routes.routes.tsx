@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Onboarding from "./pages/onboarding";
 import ProfileIndex from "./pages/profile";
+import NewQuestion from "./pages/question/new";
 import Register from "./pages/register";
 
 export const routes: Route[] = [
@@ -28,6 +29,15 @@ export const routes: Route[] = [
       {
         path: "/",
         element: <ProfileIndex />,
+      },
+    ],
+  },
+  {
+    path: "/question",
+    children: [
+      {
+        path: "/new",
+        element: <NewQuestion />,
       },
     ],
   },
