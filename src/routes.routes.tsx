@@ -4,6 +4,7 @@ import Login from "./pages/login";
 import Onboarding from "./pages/onboarding";
 import ProfileIndex from "./pages/profile";
 import NewQuestion from "./pages/question/new";
+import Question from "./pages/question/question";
 import Register from "./pages/register";
 
 export const routes: Route[] = [
@@ -35,6 +36,10 @@ export const routes: Route[] = [
   {
     path: "/question",
     children: [
+      {
+        path: "/:id",
+        element: <Question />,
+      },
       {
         path: "/new",
         element: <NewQuestion />,

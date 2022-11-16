@@ -42,7 +42,9 @@ const ProfileIndex = () => {
 
             <ul className="mt-6 ">
               {currentUser.questions.map((q) => (
-                <li>{q.title}</li>
+                <li>
+                  <Link to={`/question/${q.uuid}`}>{q.title}</Link>
+                </li>
               ))}
             </ul>
           </div>
