@@ -19,11 +19,11 @@ const Question = () => {
     <div>
       <DashHeader expanded={false} />
 
-      <main className="max-w-screen-md ml-auto mr-auto">
+      <main className="my-20 ml-auto mr-auto max-w-screen-md">
         <section>
-          <Title>{question.title}</Title>
+          <Title className="mb-4">{question.title}</Title>
 
-          <p>{question.body}</p>
+          <p className="text-sm text-gray-600">{question.body}</p>
         </section>
 
         <section className="my-10 flex flex-col gap-4">

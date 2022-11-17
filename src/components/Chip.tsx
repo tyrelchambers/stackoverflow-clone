@@ -8,29 +8,27 @@ import { faDash } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-enum STATE {
-  "LOADING",
-  "SUCCESS",
-}
+const classes =
+  "px-3 py-1 rounded-full self-center text-xs flex gap-2 items-center";
 
 const WaitingForInput = () => (
-  <div className="text-xs flex gap-2 items-center text-gray-700 bg-gray-100 px-3 py-1 rounded-full self-center">
+  <div className={`${classes} bg-gray-100 text-gray-700`}>
     <FontAwesomeIcon icon={faClock} />
     <p>Waiting for input</p>
   </div>
 );
 
 const Loading = () => (
-  <div className="text-xs flex gap-2 items-center text-green-700 bg-green-100 px-3 py-1 rounded-full self-center">
+  <div className={`${classes} bg-green-100 text-green-700`}>
     <FontAwesomeIcon icon={faCircleNotch} className="fa-spin" />
     <p>Analyzing...</p>
   </div>
 );
 
 const Positive = ({ score }: { score: number }) => (
-  <div className="text-xs flex gap-2 items-center text-rose-700 bg-rose-100 px-3 py-1 rounded-full self-center">
+  <div className={`${classes} bg-green-100 text-green-700`}>
     <FontAwesomeIcon icon={faHeart} />
-    <p className="flex gap-2 items-center">
+    <p className="flex items-center gap-2">
       Positive <FontAwesomeIcon icon={faArrowRight} className="text-xs" />{" "}
       {score.toFixed(2)}
     </p>
@@ -38,9 +36,9 @@ const Positive = ({ score }: { score: number }) => (
 );
 
 const Negative = ({ score }: { score: number }) => (
-  <div className="text-xs flex gap-2 items-center text-gray-700 bg-gray-100 px-3 py-1 rounded-full self-center">
+  <div className={`${classes} bg-rose-100 text-rose-700`}>
     <FontAwesomeIcon icon={faCloudShowersHeavy} />
-    <p className="flex gap-2 items-center">
+    <p className="flex items-center gap-2">
       Negative <FontAwesomeIcon icon={faArrowRight} className="text-xs" />{" "}
       {score.toFixed(2)}
     </p>
@@ -48,7 +46,7 @@ const Negative = ({ score }: { score: number }) => (
 );
 
 const Neutral = () => (
-  <div className="text-xs flex gap-2 items-center text-gray-700 bg-gray-100 px-3 py-1 rounded-full self-center">
+  <div className={`${classes} bg-gray-100 text-gray-700`}>
     <FontAwesomeIcon icon={faDash} />
     <p>Neutral</p>
   </div>

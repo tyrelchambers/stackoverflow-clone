@@ -11,7 +11,7 @@ import {
 } from "@mantine/hooks";
 
 const TextEditor = ({ analyze }) => {
-  const [value, setValue] = useDebouncedState("", 3000);
+  const [value, setValue] = useDebouncedState("", 1000);
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -23,6 +23,8 @@ const TextEditor = ({ analyze }) => {
     },
     onUpdate({ editor }) {
       // The content has changed
+      console.log(editor.getText());
+
       setValue(editor.getText());
     },
   });

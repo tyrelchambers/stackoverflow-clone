@@ -31,9 +31,19 @@ const CreateComment = ({ questionId }: Props) => {
     });
   };
 
+  const status = (
+    editor: any,
+    status: "idle" | "error" | "loading" | "success"
+  ): "idle" | "error" | "loading" | "success" => {
+    if (editor?.getText().length < 10) {
+      return "idle";
+    }
+    return status;
+  };
+
   return (
-    <div className="border-[1px] border-gray-300 rounded-lg overflow-hidden dark:border-gray-600">
-      <header className="bg-gray-100 dark:bg-zinc-800 p-3 w-full flex items-center border-b-[1px] border-gray-300 dark:border-gray-600">
+    <div className="overflow-hidden rounded-lg border-[1px] border-gray-300 dark:border-gray-600">
+      <header className="flex w-full items-center border-b-[1px] border-gray-300 bg-gray-100 p-3 dark:border-gray-600 dark:bg-zinc-800">
         <Avatar radius="xl" />
         <p className="text-sm">{currentUser?.profile.username}</p>
       </header>
@@ -42,12 +52,14 @@ const CreateComment = ({ questionId }: Props) => {
           <TextEditor analyze={analyze} />
         </section>
       </form>
-      {console.log(analyze.data)}
-      <footer className="flex p-3 border-t-[1px] border-gray-300 dark:border-gray-600 justify-between items-center">
-        <Chip state={analyze.status} sentiment={analyze.data?.sentiment} />
+      <footer className="flex items-center justify-between border-t-[1px] border-gray-300 p-3 dark:border-gray-600">
+        <Chip
+          state={status(commentEditor, analyze.status)}
+          sentiment={analyze.data?.sentiment}
+        />
         <button
           type="button"
-          className="p-2 rounded-full px-4 text-white bg-rose-400 text-sm"
+          className="rounded-full bg-rose-400 p-2 px-4 text-sm text-white"
           onClick={submitHandler}
         >
           Comment
