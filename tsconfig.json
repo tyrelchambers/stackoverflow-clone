@@ -16,8 +16,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@api/prisma/types": ["../api/node_modules/@prisma/client"],
-      "ui/*": ["*"]
+      "@api/prisma/types": ["../api/node_modules/@prisma/client"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

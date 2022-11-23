@@ -7,3 +7,8 @@ export interface ProfileType extends User {
 export interface CommentType extends Comment {
   user?: User;
 }
+
+export enum VOTE {
+  UP = "UP",
+  DOWN = "DOWN",
+}

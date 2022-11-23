@@ -43,7 +43,7 @@ const CreateComment = ({ questionId }: Props) => {
 
   return (
     <div className="overflow-hidden rounded-lg border-[1px] border-gray-300 dark:border-gray-600">
-      <header className="flex w-full items-center border-b-[1px] border-gray-300 bg-gray-100 p-3 dark:border-gray-600 dark:bg-zinc-800">
+      <header className="flex w-full items-center gap-4 border-b-[1px] border-gray-300 bg-gray-100 p-3 dark:border-gray-600 dark:bg-zinc-800">
         <Avatar radius="xl" />
         <p className="text-sm">{currentUser?.profile.username}</p>
       </header>
