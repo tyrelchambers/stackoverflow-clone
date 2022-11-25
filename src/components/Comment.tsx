@@ -5,12 +5,14 @@ import Document from "@tiptap/extension-document";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import { format } from "date-fns";
-import { CommentType } from "types/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
-import CreateComment from "./CreateComment";
 import CommentReplyInput from "./CommentReplyInput";
 import SubReply from "./SubReply";
+import { faTrash } from "@fortawesome/pro-solid-svg-icons";
+import { useComment } from "../hooks/useComment";
+import { CommentType } from "../types/types";
+import { useUser } from "../hooks/useUser";
 
 interface Props {
   comment: CommentType;
@@ -19,6 +21,8 @@ interface Props {
 
 const Comment = ({ comment, questionId }: Props) => {
   const [showCommentField, setShowCommentField] = useState(false);
+  const { deleteComment } = useComment();
+  const { currentUser } = useUser();
 
   const commentBody = useMemo(() => {
     return generateHTML(comment?.body, [Document, Paragraph, Text]);
@@ -42,12 +46,28 @@ const Comment = ({ comment, questionId }: Props) => {
         </section>
 
         <footer className=" flex p-3 dark:bg-zinc-900">
-          <button
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800"
-            onClick={() => setShowCommentField(!showCommentField)}
-          >
-            <FontAwesomeIcon icon={faReply} size="1x" />
-          </button>
+          <div className="flex items-center">
+            <button
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800"
+              onClick={() => setShowCommentField(!showCommentField)}
+            >
+              <FontAwesomeIcon icon={faReply} size="1x" />
+            </button>
+          </div>
+
+          <div className="flex items-center">
+            {currentUser?.uuid === comment?.user.uuid && (
+              <button
+                onClick={() =>
+                  deleteComment.mutate({
+                    commentId: comment.uuid,
+                  })
+                }
+              >
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            )}
+          </div>
         </footer>
 
         {showCommentField && (
