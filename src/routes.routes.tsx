@@ -37,12 +37,12 @@ export const routes: Route[] = [
     path: "/question",
     children: [
       {
-        path: "/:id",
-        element: <Question />,
-      },
-      {
         path: "/new",
         element: <NewQuestion />,
+      },
+      {
+        path: ":id",
+        element: <Question />,
       },
     ],
   },

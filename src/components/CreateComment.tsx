@@ -9,9 +9,10 @@ import TextEditor from "./TextEditor";
 
 interface Props {
   questionId: string;
+  placeholder: string;
 }
 
-const CreateComment = ({ questionId }: Props) => {
+const CreateComment = ({ questionId, placeholder }: Props) => {
   const { currentUser } = useUser();
   const { commentEditor } = useRefStore();
   const { createComment } = useComment();
@@ -49,7 +50,7 @@ const CreateComment = ({ questionId }: Props) => {
       </header>
       <form>
         <section className="min-h-20 h-full">
-          <TextEditor analyze={analyze} />
+          <TextEditor analyze={analyze} placeholder={placeholder} />
         </section>
       </form>
       <footer className="flex items-center justify-between border-t-[1px] border-gray-300 p-3 dark:border-gray-600">

@@ -34,10 +34,10 @@ const VoteGroup = ({ questionId, votes }: Props) => {
   };
 
   return (
-    <section className="mt-10 w-fit">
+    <section className=" w-fit">
       <div className="flex items-center gap-4">
         <button
-          className={`flex items-center justify-center gap-2 rounded-full py-1 px-4 dark:bg-zinc-800 ${highlightVote(
+          className={`flex items-center justify-center gap-2 rounded-full py-1 px-4 dark:bg-zinc-700 ${highlightVote(
             "UP"
           )}`}
           onClick={() => voteHandler(VOTE.UP)}
@@ -48,7 +48,7 @@ const VoteGroup = ({ questionId, votes }: Props) => {
         </button>
 
         <button
-          className={`flex items-center justify-center gap-2 rounded-full py-1 px-4 dark:bg-zinc-800 ${highlightVote(
+          className={`flex items-center justify-center gap-2 rounded-full py-1 px-4 dark:bg-zinc-700 ${highlightVote(
             "DOWN"
           )}`}
           onClick={() => voteHandler(VOTE.DOWN)}

@@ -14,9 +14,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "../",
     "paths": {
-      "@api/prisma/types": ["../api/node_modules/@prisma/client"]
+      "@api/prisma/types": ["api/node_modules/@prisma/client"],
+      "@ui/*": ["ui/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

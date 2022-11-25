@@ -12,7 +12,7 @@ const Question = () => {
     params: { id: questionId },
   } = useMatch();
 
-  const { question } = useQuestion({ questionId });
+  const { question } = useQuestion(questionId);
 
   if (!question) return null;
 
@@ -29,13 +29,17 @@ const Question = () => {
           </p>
         </section>
 
-        <VoteGroup questionId={questionId} votes={question.vote} />
+        <section className="mt-10 w-full rounded-3xl border-[1px] border-zinc-300 p-6 dark:border-zinc-800">
+          <VoteGroup questionId={questionId} votes={question.vote} />
+        </section>
 
         <Divider className="my-10 dark:border-zinc-800" />
 
         <section className=" flex flex-col gap-4">
           <Title order={3}>Comments</Title>
-          {question.comments?.map((c) => <Comment comment={c} />) || null}
+          {question.comments?.map((c) => (
+            <Comment comment={c} questionId={questionId} />
+          )) || null}
         </section>
 
         <Divider className="my-10 dark:border-zinc-800" />

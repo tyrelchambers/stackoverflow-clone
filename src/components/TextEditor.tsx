@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useRefStore } from "../stores/useRefStore";
-import { useSentiment } from "../hooks/useSentiment";
-import {
-  useDebouncedState,
-  useDebouncedValue,
-  useInterval,
-  useTimeout,
-} from "@mantine/hooks";
+import { useDebouncedState } from "@mantine/hooks";
+import Placeholder from "@tiptap/extension-placeholder";
 
-const TextEditor = ({ analyze }) => {
+const TextEditor = ({ analyze, placeholder = "Leave a comment" }) => {
   const [value, setValue] = useDebouncedState("", 1000);
 
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder,
+      }),
+    ],
     content: "",
     editorProps: {
       attributes: {
@@ -23,7 +23,6 @@ const TextEditor = ({ analyze }) => {
     },
     onUpdate({ editor }) {
       // The content has changed
-      console.log(editor.getText());
 
       setValue(editor.getText());
     },
@@ -40,13 +39,7 @@ const TextEditor = ({ analyze }) => {
     }
   }, [value]);
 
-  return (
-    <EditorContent
-      editor={editor}
-      placeholder="Leave a comment"
-      className="h-full"
-    />
-  );
+  return <EditorContent editor={editor} className="h-full" />;
 };
 
 export default TextEditor;
